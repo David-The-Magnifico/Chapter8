@@ -12,10 +12,10 @@ public class HugeIntegerTest {
     HugeInteger integer1 = new HugeInteger();
     HugeInteger integer2 = new HugeInteger();
     integer1.parse("12345678");
-    integer2.parse("12345678");
+    integer2.parse("112345678");
     String result = integer1.add(integer2);
 //    System.out.println(Arrays.toString(answer));
-    assertEquals("24691356",result);
+    assertEquals("124691356",result);
 
 }@Test
     public  void  test_to_add1(){
@@ -39,10 +39,10 @@ public class HugeIntegerTest {
 public void  test_toSubtract(){
     HugeInteger integer1 = new HugeInteger();
     HugeInteger integer2 = new HugeInteger();
-    integer1.parse("12345678");
-    integer2.parse("12344678");
+    integer1.parse("22345678");
+    integer2.parse("12345679");
     String result = integer1.subtract(integer2);
-    assertEquals("24690356",result);
+    assertEquals("9999999",result);
 
 }
 }
