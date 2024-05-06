@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class HugeInteger {
     private  int[] value = new int[40];
 
@@ -53,8 +56,40 @@ public class HugeInteger {
     }
 
     public String subtract(HugeInteger integer2) {
-
-
+        int[] temp = array(value);
+        int[] value1 = array(integer2.getValue());
+        int[] result = new int[40];
+        int check =10;
+        boolean condition = false;
+        for(int i = result.length-1 ; i >=0; i--){
+            if(condition)temp[i] = temp[i] -1;
+            if(temp[i]<value1[i]){
+                temp[i]  = temp[i] + check;
+                condition = true;
+            }
+            result[i] = temp[i] - value1[i];
+        }
+        temp = value;
+        value = result;
+        String answer = toString();
+        value = temp;
+        return answer;
     }
+    private int[] array(int[] array){
+        List<Integer> result = new ArrayList<>();
+        int count;
+        for( count = 0; count<array.length;count++){
+            if(array[count]!=0)break;
+        }
+        for(;count<array.length;count++){
+            result.add(array[count]);
+        }
+        int[] array1 = new int[result.size()];
+        for ( count = 0; count < array1.length;count++){
+            array1[count] = result.get(count);
+        }
+        return array1;
+    }
+
 
 }
