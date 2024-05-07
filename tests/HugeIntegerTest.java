@@ -122,6 +122,14 @@ public class HugeIntegerTest {
         assertThrows(IllegalArgumentException.class,()->integer2.parse("365678AS"));
     }
     @Test
+    public void test_validity3(){
+        HugeInteger integer  = new HugeInteger();
+        integer.parse("-1234567890123456789012345678901234567890");
+
+        assertThrows(IllegalArgumentException.class,()->integer.parse("-12345678901234567890123456789012345678901"));
+
+    }
+    @Test
     public void test_number_validity2(){
         HugeInteger integer2 = new HugeInteger();
         assertThrows(IllegalArgumentException.class,()->integer2.parse("365678123456789012456789012345678901234567890"));
