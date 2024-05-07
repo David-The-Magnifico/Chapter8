@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,7 +13,6 @@ public class HugeIntegerTest {
     integer1.parse("12345678");
     integer2.parse("112345678");
     String result = integer1.add(integer2);
-//    System.out.println(Arrays.toString(answer));
     assertEquals("124691356",result);
 
     }
