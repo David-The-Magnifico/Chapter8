@@ -83,6 +83,7 @@ public class HugeInteger {
     }
 
     private void validate(String numbers) {
+        if(numbers.length()==41 && numbers.charAt(0)!='-')throw new IllegalArgumentException("Invalid input");
         if (numbers.length() > 40 || numbers.isBlank()) throw new IllegalArgumentException("Invalid input");
         for (int count = 0; count < numbers.length(); count++) {
             if (!checkNumber(numbers.charAt(count)))
