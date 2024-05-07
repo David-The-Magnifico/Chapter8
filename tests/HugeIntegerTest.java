@@ -219,10 +219,10 @@ public class HugeIntegerTest {
     public void test_add2(){
         HugeInteger integer1 = new HugeInteger();
         HugeInteger integer2 = new HugeInteger();
-        integer1.parse("-365778");
-        integer2.parse("-465678");
+        integer1.parse("-36577800");
+        integer2.parse("-46567800");
         String result = integer1.add(integer2);
-        assertEquals("-831456",result);
+        assertEquals("-83145600",result);
     }
     @Test
     public void test_subtract(){
