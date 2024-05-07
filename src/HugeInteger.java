@@ -41,7 +41,7 @@ public class HugeInteger {
     public String add(HugeInteger integer2) {
         String answer = "";
         if(isPositive && integer2.isPositive) {
-            return getAnswer(integer2);
+            return getAnswerForAddition(integer2);
         }else if(this.isPositive && !integer2.isPositive ){
             integer2.isPositive= true;
              return subtract(integer2);
@@ -58,7 +58,7 @@ public class HugeInteger {
         return answer;
     }
 
-    private String getAnswer(HugeInteger integer2) {
+    private String getAnswerForAddition(HugeInteger integer2) {
         String answer;
         int[] temp = value;
         int[] value1 = integer2.getValue();
@@ -100,21 +100,7 @@ public class HugeInteger {
 
     public String subtract(HugeInteger integer2) {
         if(this.isPositive && integer2.isPositive){
-        int[] array = array(integer2.getValue());
-        int[] array1 = array(value);
-        int[] temp = Arrays.copyOf(value,value.length);
-        String answer  = "";
-        if(array1.length > array.length ) {
-            checkWhichValueIsGreater1(array1,array);
-            answer = toString();
-        }
-        else if(array.length > array1.length ){
-            checkWhichValueIsGreater2(array1,array);
-            answer = "-" + toString();
-        }else answer = checkIfLengthIsEqual(array1,array);
-        if(answer.isBlank()) answer = "0";
-        value = temp;
-        return answer;
+            return getAnswerForSubtraction(integer2);
         }else if(this.isPositive && !integer2.isPositive){
             integer2.isPositive = true;
             return add(integer2);
@@ -130,6 +116,24 @@ public class HugeInteger {
             return add(integer2);
         }
         return "";
+    }
+
+    private String getAnswerForSubtraction(HugeInteger integer2) {
+        int[] array = array(integer2.getValue());
+        int[] array1 = array(value);
+        int[] temp = Arrays.copyOf(value,value.length);
+        String answer  = "";
+        if(array1.length > array.length ) {
+            checkWhichValueIsGreater1(array1,array);
+            answer = toString();
+        }
+        else if(array.length > array1.length ){
+            checkWhichValueIsGreater2(array1,array);
+            answer = "-" + toString();
+        }else answer = checkIfLengthIsEqual(array1,array);
+        if(answer.isBlank()) answer = "0";
+        value = temp;
+        return answer;
     }
 
     private void checkWhichValueIsGreater1(int[] array1, int[] array) {
@@ -254,10 +258,4 @@ public class HugeInteger {
     }
 
     public boolean isLesserThanOrEqualTo(HugeInteger integer2) {
-        return isLesserThan(integer2) || isEquals(integer2);
-    }
-
-    public boolean isGreaterThanOrEqualTo(HugeInteger integer2) {
-        return isGreaterThan(integer2) || isEquals(integer2);
-    }
-}
+        return isLesserThan(integer2) || isEquals(integer2)
